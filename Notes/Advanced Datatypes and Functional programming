@@ -1,0 +1,82 @@
+# Advanced Data types and Functional Programming
+
+## Datatypes :
+
+Namedtuple in Python
+
+- Python supports a type of container like dictionaries called “namedtuples()” present in module, “collection“.
+- Like dictionaries they contain keys that are hashed to a particular value.
+- But on contrary, it supports both access from key value and iteration, the functionality that dictionaries lack.
+
+---
+Operations on namedtuple() :
+
+Access Operations
+1. Access by index : The attribute values of namedtuple() are ordered and
+can be accessed using the index number unlike dictionaries which are not accessible by index.
+
+2. Access by keyname : Access by keyname is also allowed as in dictionaries.
+
+3. using getattr() :- This is yet another way to access the value by giving namedtuple and key value as its argument.
+---
+
+# Python code to demonstrate namedtuple() and
+# Access by name, index and getattr()
+
+# importing "collections" for namedtuple()
+import collections
+
+# Declaring namedtuple()
+Student = collections.namedtuple('Student',['name','age','DOB'])
+
+# Adding values
+S = Student('Nandini','19','2541997')
+
+# Access using index
+print ("The Student age using index is : ",end ="")
+print (S[1])
+
+# Access using name
+print ("The Student name using keyname is : ",end ="")
+print (S.name)
+
+# Access using getattr()
+print ("The Student DOB using getattr() is : ",end ="")
+print (getattr(S,'DOB'))
+
+---
+
+```python
+
+Output :
+
+The Student age using index is : 19
+The Student name using keyname is : Nandini
+The Student DOB using getattr() is : 2541997
+
+```
+---
+
+defaultdict
+
+A defaultdict works exactly like a normal dict, but it is initialized with a function (“default factory”) that takes no arguments and provides the default value for a nonexistent key.
+
+A defaultdict will never raise a KeyError. Any key that does not exist gets the value returned by the default factory.
+
+```python
+
+>>> from collections import defaultdict
+>>> ice_cream = defaultdict(lambda: 'Vanilla')
+>>>
+>>> ice_cream = defaultdict(lambda: 'Vanilla')
+>>> ice_cream['Sarah'] = 'Chunky Monkey'
+>>> ice_cream['Abdul'] = 'Butter Pecan'
+>>> print ice_cream['Sarah']
+Chunky Monkey
+>>> print ice_cream['Joe']
+Vanilla
+>>>
+
+```
+
+Be sure to pass the function object to defaultdict(). Do not call the function, i.e. defaultdict(func), not defaultdict(func()).
